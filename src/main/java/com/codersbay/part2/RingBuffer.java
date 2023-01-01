@@ -84,7 +84,7 @@ public class RingBuffer {
      * @throws a RuntimeException if the buffer is empty.
      */
     public String peek() {
-        return queue[first];
+        return queue[last];
     }
 
     /**
@@ -95,15 +95,21 @@ public class RingBuffer {
     }
 
     private class RingBufferIterator implements Iterator<String> {
-        private int i = 0;
+        private int i = first;
+
+        private int sumelementcounter = 0;
 
         public boolean hasNext() {
-            return i < numberOfElementsOnQueue;
+            return sumelementcounter < numberOfElementsOnQueue;
         }
 
         public String next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
+            }
+            ++sumelementcounter;
+            if (i == numberOfElementsOnQueue){
+                i=0;
             }
 
             return queue[i++];

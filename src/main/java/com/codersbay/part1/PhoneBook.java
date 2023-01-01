@@ -12,9 +12,6 @@ public class PhoneBook {
         contacts.add(contact);
         return contacts.size()-1;
     }
-    public String getNumberfromIndex(int index) {
-        return contacts.get(index).getCellnumber();
-    }
     public Person deleteContact(int i) {
         return contacts.remove(i);
     }
@@ -25,7 +22,9 @@ public class PhoneBook {
         String outputGetContact = "[" + Integer.toString(i) + "] " + contacts.get(i);
         return outputGetContact;
     }
-
+    public String getNumberfromIndex(int index) {
+        return contacts.get(index).getCellnumber();
+    }
     public int size() {
         return contacts.size();
     }

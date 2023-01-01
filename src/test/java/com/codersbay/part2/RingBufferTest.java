@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Iterator;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -64,8 +65,11 @@ class RingBufferTest {
 
     @Test
     void testPeek() {
-        // TODO: implement this test yourself
-        fail("Not yet implemented");
+         String [] testInput = new String[] { "1", "2", "3", "4", "5" };
+        for (int i = 0; i < testInput.length; i++) {
+            ringBuffer.enqueue(testInput[i]);
+        }
+        assertEquals("5", ringBuffer.peek());
     }
 
     private static Stream<Arguments> provideDifferentSizes() {
